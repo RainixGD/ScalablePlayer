@@ -8,6 +8,9 @@
 #include <MinHook.h>
 #include <mutex>
 
+#define MEMBERBYOFFSET(type, class, offset) *reinterpret_cast<type*>(reinterpret_cast<uintptr_t>(class) + offset)
+#define MBO MEMBERBYOFFSET
+
 #define WIN32CAC_ENTRY(inject) \
 	DWORD WINAPI _thread__func_(void* hModule) { \
         MH_Initialize(); \
